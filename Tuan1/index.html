@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuần 1 — HT&CN WEB</title>
+<style>
+  :root{
+    --bg:#0d1117;
+    --panel:#11161d;
+    --line:#22283350;
+    --text:#e6edf3;
+    --muted:#8b95a1;
+    --accent:#5ee6c8;
+    --mono:'JetBrains Mono','Fira Code',Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    padding:56px 20px 80px;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  .eyebrow{
+    color:var(--accent);
+    font-size:13px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin:0 0 8px;
+  }
+  h1{
+    font-size:clamp(28px,4vw,40px);
+    margin:0 0 6px;
+    line-height:1.15;
+  }
+  .sub{color:var(--muted);font-size:14px;margin:0 0 40px;}
+  ol{list-style:none;margin:0;padding:0;counter-reset:item;}
+  li{
+    counter-increment:item;
+    border-top:1px solid var(--line);
+    padding:18px 4px;
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+  }
+  li:last-child{border-bottom:1px solid var(--line);}
+  .num{
+    color:var(--muted);
+    font-size:13px;
+    min-width:22px;
+  }
+  li:before{
+    content:counter(item, decimal-leading-zero);
+    color:var(--muted);
+    font-size:13px;
+    min-width:24px;
+  }
+  a{
+    color:var(--text);
+    text-decoration:none;
+    font-size:17px;
+    flex:1;
+  }
+  a:hover, a:focus-visible{color:var(--accent);}
+  .path{
+    color:var(--muted);
+    font-size:12px;
+    display:block;
+    margin-top:2px;
+  }
+  footer{
+    margin-top:48px;
+    color:var(--muted);
+    font-size:12px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">HT&amp;CN WEB — IUH</p>
+    <h1>Tuần 1</h1>
+    <p class="sub">Danh sách bài thực hành đã deploy qua GitHub Pages.</p>
+
+    <ol>
+      <li><a href="Bai2/Bai2a/index.HTML">Bài 2a<span class="path">Bai2/Bai2a/index.HTML</span></a></li>
+      <li><a href="Bai2/Bai2b/DO_2.html">Bài 2b<span class="path">Bai2/Bai2b/DO_2.html</span></a></li>
+      <li><a href="Bai3/hometext.html">Bài 3<span class="path">Bai3/hometext.html</span></a></li>
+      <li><a href="Bai4/">Bài 4<span class="path">Bai4/ (index.html)</span></a></li>
+      <li><a href="Bai6/bai6a.html">Bài 6<span class="path">Bai6/bai6a.html</span></a></li>
+      <li><a href="Bai7/smith.html">Bài 7<span class="path">Bai7/smith.html</span></a></li>
+    </ol>
+
+    <footer>thinhthinhkinh / ht-va-cn-web</footer>
+  </div>
+</body>
+</html>
