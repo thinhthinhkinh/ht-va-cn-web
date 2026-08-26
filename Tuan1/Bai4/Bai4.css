@@ -1,0 +1,24 @@
+    .header-img{
+        width: 548px;
+        height: 150px;
+        display: block;
+    }
+
+    .hr{
+        border: 2px solid #2f2828
+    }
+
+    .h1{
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+        margin: 20px 0 10px 0;
+    }
+
+    .intro{
+        font-size: 11px;
+        margin: 10px 0 20px 0;
+        line-height: 1.4;
+    }
+
+    

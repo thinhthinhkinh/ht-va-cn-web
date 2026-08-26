@@ -1,0 +1,78 @@
+
+        .title{
+            text-align: center;
+            color: #753c1b;
+            margin: 30px o;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .thumbnail{
+            width: 150px;
+            height: 100px;
+            border: 2px solid #ccc;
+        }
+
+        .navigation-buttons {
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            background-color: transparent;
+        }
+
+        .hr{
+            border: 1px solid #753c1b;
+        }
+
+        .instruction-text {
+            font-size: 15px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        
+        .slideshow-section {
+            display: block;
+            text-align: center;
+            margin: 50px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, #ffffff, #f8f8f8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #753c1b;
+            max-width: 900px;
+        }
+
+        .slide-image {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            border: 5px solid #753c1b;
+            border-radius: 15px;
+            margin: 30px auto;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }

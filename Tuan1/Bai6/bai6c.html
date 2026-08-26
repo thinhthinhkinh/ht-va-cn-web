@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Form with Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.4;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid #999;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .date-form {
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"] {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        
+        .form-group input[type="color"] {
+            width: 50px;
+            height: 30px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .submit-button {
+            background: #f0f0f0;
+            border: 1px solid #999;
+            padding: 8px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .submit-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .date-selector {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        
+        .date-selector select {
+            width: auto;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+        .calendar-widget {
+            border: 1px solid #ccc;
+            background: white;
+            margin-top: 10px;
+            border-radius: 3px;
+            max-width: 300px;
+        }
+        
+        .calendar-header {
+            background: #f0f0f0;
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            font-weight: bold;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .calendar-nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        
+        .calendar-nav button:hover {
+            background: #e0e0e0;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+        }
+        
+        .calendar-day-header {
+            background: #e0e0e0;
+            text-align: center;
+            padding: 5px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .calendar-day {
+            text-align: center;
+            padding: 8px;
+            cursor: pointer;
+            border: 1px solid #f0f0f0;
+            min-height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calendar-day:hover {
+            background: #e0e0e0;
+        }
+        
+        .calendar-day.selected {
+            background: #007bff;
+            color: white;
+        }
+        
+        .calendar-day.other-month {
+            color: #ccc;
+        }
+        
+        .calendar-day.today {
+            background: #ffd700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="date-form">
+            <form id="dateForm">
+                <div class="form-group">
+                    <label for="fullName">Name:</label>
+                    <input type="text" id="fullName" name="fullName">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telephone">Telephone Number:</label>
+                    <input type="tel" id="telephone" name="telephone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="emailAddress">Email:</label>
+                    <input type="email" id="emailAddress" name="emailAddress">
+                </div>
+                
+                <div class="form-group">
+                    <label for="favoriteColor">Favorite Color:</label>
+                    <input type="color" id="favoriteColor" name="favoriteColor" value="#0000ff">
+                </div>
+                
+                <div class="form-group">
+                    <label>Date of Birth:</label>
+                    <div class="date-selector">
+                        <select id="birthMonth" name="birthMonth">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08" selected>08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <span>/</span>
+                        <select id="birthDay" name="birthDay">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15" selected>15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+                        <span>/</span>
+                        <select id="birthYear" name="birthYear">
+                            <option value="1990">1990</option>
+                            <option value="1991">1991</option>
+                            <option value="1992">1992</option>
+                            <option value="1993">1993</option>
+                            <option value="1994">1994</option>
+                            <option value="1995">1995</option>
+                            <option value="1996">1996</option>
+                            <option value="1997">1997</option>
+                            <option value="1998">1998</option>
+                            <option value="1999">1999</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <option value="2003">2003</option>
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015" selected>2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="calendar-widget">
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button type="button" id="prevMonth">◀</button>
+                            <span id="currentMonth">July 2015</span>
+                            <button type="button" id="nextMonth">▶</button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        let currentDate = new Date(2015, 6, 1); // July 1, 2015
+        let selectedDate = new Date(2015, 6, 15); // July 15, 2015
+        
+        function getDaysInMonth(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+        
+        function getFirstDayOfMonth(year, month) {
+            return new Date(year, month, 1).getDay();
+        }
+        
+        function renderCalendar() {
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+            
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Update month header
+            document.getElementById('currentMonth').textContent = 
+                monthNames[month] + ' ' + year;
+            
+            // Clear existing calendar days
+            const grid = document.getElementById('calendarGrid');
+            const dayElements = grid.querySelectorAll('.calendar-day:not(.calendar-day-header)');
+            dayElements.forEach(el => el.remove());
+            
+            const daysInMonth = getDaysInMonth(year, month);
+            const firstDay = getFirstDayOfMonth(year, month);
+            const daysInPrevMonth = getDaysInMonth(year, month - 1);
+            
+            // Add previous month's trailing days
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const day = daysInPrevMonth - i;
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                dayElement.textContent = day;
+                grid.appendChild(dayElement);
+            }
+            
+            // Add current month's days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                // Check if this day is selected
+                if (selectedDate.getFullYear() === year && 
+                    selectedDate.getMonth() === month && 
+                    selectedDate.getDate() === day) {
+                    dayElement.classList.add('selected');
+                }
+                
+                dayElement.addEventListener('click', function() {
+                    // Remove previous selection
+                    grid.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+                    
+                    // Select this day
+                    this.classList.add('selected');
+                    selectedDate = new Date(year, month, day);
+                    updateDropdowns();
+                });
+                
+                grid.appendChild(dayElement);
+            }
+            
+            // Add next month's leading days
+            const totalCells = firstDay + daysInMonth;
+            const remainingCells = 42 - totalCells; // 6 rows × 7 days = 42 cells
+            for (let day = 1; day <= remainingCells; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day other-month';
+                dayElement.textContent = day;
+                grid.appendChild(dayElement);
+            }
+        }
+        
+        function updateDropdowns() {
+            document.getElementById('birthMonth').value = 
+                String(selectedDate.getMonth() + 1).padStart(2, '0');
+            document.getElementById('birthDay').value = 
+                String(selectedDate.getDate()).padStart(2, '0');
+            document.getElementById('birthYear').value = 
+                selectedDate.getFullYear();
+        }
+        
+        // Navigation buttons
+        document.getElementById('prevMonth').addEventListener('click', function() {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+        
+        document.getElementById('nextMonth').addEventListener('click', function() {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+        
+        // Sync dropdown changes with calendar
+        ['birthMonth', 'birthDay', 'birthYear'].forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                const month = parseInt(document.getElementById('birthMonth').value) - 1;
+                const day = parseInt(document.getElementById('birthDay').value);
+                const year = parseInt(document.getElementById('birthYear').value);
+                
+                selectedDate = new Date(year, month, day);
+                currentDate = new Date(year, month, 1);
+                renderCalendar();
+            });
+        });
+        
+        // Form submission
+        document.getElementById('dateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('fullName').value,
+                telephone: document.getElementById('telephone').value,
+                email: document.getElementById('emailAddress').value,
+                favoriteColor: document.getElementById('favoriteColor').value,
+                birthDate: `${document.getElementById('birthMonth').value}/${document.getElementById('birthDay').value}/${document.getElementById('birthYear').value}`
+            };
+            
+            // Display form data
+            let summary = 'Form submitted successfully!\n\nForm Data:\n';
+            summary += `Name: ${formData.name}\n`;
+            summary += `Telephone: ${formData.telephone}\n`;
+            summary += `Email: ${formData.email}\n`;
+            summary += `Favorite Color: ${formData.favoriteColor}\n`;
+            summary += `Date of Birth: ${formData.birthDate}`;
+            
+            alert(summary);
+        });
+        
+        // Initialize calendar
+        renderCalendar();
+        updateDropdowns();
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<head>
+
+<!--
+   New Perspectives on HTML and XHTML 5th Edition
+   Tutorial 2
+   Case 2
+
+   Fiddler Home Page
+   Author: 
+   Date:   
+
+   Filename:         home.htm
+   Supporting files: fiddler.jpg
+                     
+-->
+    <meta charset="UTF-8">
+   <title>SLIDE 2</title>
+
+    <!--Xây dựng kiểu cách-->
+    <link rel="stylesheet" href="">
+</head>
+
+    <!--Style CSS-->
+    <link rel="stylesheet" href="Bai3.css">
+    <!--Phần thân-->
+<body>
+    
+    <!--Phần header + image-->
+    <div>
+        <img src="..\..\Homework\2023_BTHTCNWeb_\Tuan1\Bai3\fiddler.jpg" alt="" align = "center">
+        <hr style="border: 1px solid #753c1b";>
+        <h2 class="title">FIDDLER ON THE ROOF Jr.</h2>
+    </div>
+
+
+   <hr style="border: 1px solid #753c1b"/>
+
+   <p><span style="color: brown">Thanks to everyone who made Fiddler on the
+      Roof Jr. such a smashing success!</span> After all of the hard work on
+      rehearsals and set building and promotion, it really paid off. I have
+      gotten so many comments on your wonderful performances.</p>
+   <p>I've started putting up a slide show of the
+      production. Please feel free to download the files from the Web site.
+      If you want high resolution photos on a photo CD, please 
+      contact me.</p>
+   <p>Once again: <span style="color:brown"><i>BRAVO!!!</i></span> -- Mrs. Juroszek</p>
+   <hr style="border: 1px solid #753c1b"/>
+
+       <!--Thumbnail phía trên button-->
+    <div class="thumbnail-gallery">
+        <img class="thumbnail" src="./img/thumb1.jpg" alt="">
+        <img class="thumbnail" src="./img/thumb2.jpg" alt="">
+        <img class="thumbnail" src="./img/thumb3.jpg" alt="">
+        <img class="thumbnail" src="./img/thumb4.jpg" alt="">
+        <img class="thumbnail" src="./img/thumb5.jpg" alt="">
+        <img class="thumbnail" src="./img/thumb6.jpg" alt="">
+    </div>
+      
+   
+    <!--Button-->
+    <div class="navigation-buttons">
+        <button class="nav-btn" onclick="goToStart()" title="Start">
+            <img src="./img/start.jpg" alt="Start">
+        </button>
+        <button class="nav-btn" onclick="goBack()" title="Back">
+            <img src="./img/back.jpg" alt="Back">
+        </button>
+        <button class="nav-btn" onclick="goHome()" title="Home">
+            <img src="./img/home.jpg" alt="Home">
+        </button>
+        <button class="nav-btn" onclick="goForward()" title="Forward">
+            <img src="./img/forward.jpg" alt="Forward">
+        </button>
+        <button class="nav-btn" onclick="goToEnd()" title="End">
+            <img src="./img/end.jpg" alt="End">
+        </button>
+
+        <p class="instruction-text">
+            <i>Bấm nút dưới đây để hiển thị slideshow</i>
+        </p>
+    </div>
+
+    <!--Hiển thị hình ảnh SLide 1-->
+    <div class="slideshow-section" id="slideshow">
+        <img id="slide-image" src="./img/slide2.jpg" alt="Slide Image" class="slide-image">
+        
+        <!-- <div class="slide-navigation">
+            <button class="slide-nav-btn" onclick="previousSlide()" id="prev-btn">◄ Previous</button>
+            <button class="slide-nav-btn" onclick="goHome()">Home</button>
+            <button class="slide-nav-btn" onclick="nextSlide()" id="next-btn">Next ►</button>
+        </div> -->
+        
+    </div>
+
+    <!--Chuyển slide-->
+    <script>
+        function goHome(){
+            window.location.href = 'hometext.html'
+        }
+
+        function goToStart(){
+            window.location.href = 'slide1.html'
+        }
+
+        function goBack(){
+            window.location.href = 'slide1.html'
+        }
+
+        function goForward(){
+            window.location.href = 'slide3.html'
+        }
+
+        function goToEnd(){
+            window.location.href = 'slide6.html'
+        }
+
+    </script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jackson Electronics - Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #87CEEB, #E0F6FF);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #00CED1, #20B2AA);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 10px 10px 0 0;
+            /* border: 2px solid #008B8B; */
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-title {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .form-row {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-row label {
+            width: 120px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-row input[type="text"], 
+        .form-row select {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #999;
+            background: white;
+        }
+        
+        .address-row {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .address-row input[type="text"] {
+            flex: 1;
+            padding: 5px;
+            border: 1px solid #999;
+            background: white;
+        }
+        
+        .checkbox-group {
+            margin-left: 120px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-group label {
+            width: auto;
+            margin-right: 20px;
+            font-weight: normal;
+        }
+        
+        .checkbox-group input[type="checkbox"],
+        .checkbox-group input[type="radio"] {
+            margin-right: 5px;
+        }
+        
+        .comments-section {
+            margin-top: 20px;
+        }
+        
+        .comments-section label {
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .comments-section textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #999;
+            background: white;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .button-group button {
+            padding: 8px 20px;
+            margin: 0 10px;
+            background: #f0f0f0;
+            border: 2px solid #999;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .button-group button:hover {
+            background: #e0e0e0;
+        }
+        
+        .zip-field {
+            width: 80px;
+        }
+        
+        .state-field {
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header">
+            <div class="company-name">Jackson<br>Electronics</div>
+        </div>
+        
+        <div class="form-title">Registration Form</div>
+        <div class="subtitle">Register your Jackson Electronics product here</div>
+        
+        <form id="registrationForm">
+            <div class="form-row">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
+                <label for="lastName" style="margin-left: 20px;">Last Name:</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+            
+            <div class="form-row">
+                <label for="address1">Address #1:</label>
+                <input type="text" id="address1" name="address1">
+            </div>
+            
+            <div class="form-row">
+                <label for="address2">Address #2:</label>
+                <input type="text" id="address2" name="address2">
+            </div>
+            
+            <div class="form-row">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city">
+                <label for="state" style="margin-left: 20px;">State:</label>
+                <input type="text" id="state" name="state" class="state-field">
+                <label for="zip" style="margin-left: 20px;">Zip:</label>
+                <input type="text" id="zip" name="zip" class="zip-field">
+            </div>
+            
+            <div class="form-row">
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <label for="product">Product:</label>
+                <select id="product" name="product">
+                    <option value="ScanMaster">ScanMaster</option>
+                    <option value="PrintPro">PrintPro</option>
+                    <option value="DataSync">DataSync</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <label for="datePurchased">Date Purchased:</label>
+                <input type="text" id="datePurchased" name="datePurchased" placeholder="MM/DD/YYYY">
+            </div>
+            
+            <div class="form-row">
+                <label for="serialNumber">Serial #:</label>
+                <input type="text" id="serialNumber" name="serialNumber">
+            </div>
+            
+            <div class="form-row">
+                <label>Used for:</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="radio" id="home" name="usedFor" value="home">
+                <label for="home">Home</label>
+                <input type="radio" id="business" name="usedFor" value="business">
+                <label for="business">Business</label>
+                <input type="radio" id="government" name="usedFor" value="government">
+                <label for="government">Government</label>
+                <br>
+                <input type="radio" id="educational" name="usedFor" value="educational">
+                <label for="educational">Educational Institution</label>
+                <input type="radio" id="other" name="usedFor" value="other">
+                <label for="other">Other</label>
+            </div>
+            
+            <div class="form-row">
+                <label>System (check all that apply):</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="windows" name="system" value="windows">
+                <label for="windows">Windows</label>
+                <input type="checkbox" id="macintosh" name="system" value="macintosh">
+                <label for="macintosh">Macintosh</label>
+                <br>
+                <input type="checkbox" id="unix" name="system" value="unix">
+                <label for="unix">UNIX</label>
+                <input type="checkbox" id="otherSystem" name="system" value="other">
+                <label for="otherSystem">Other</label>
+            </div>
+            
+            <div class="comments-section">
+                <label for="comments">Comments?</label>
+                <textarea id="comments" name="comments" placeholder="Enter your comments here..."></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit">Click to register</button>
+                <button type="reset">Click to cancel</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration submitted successfully!');
+        });
+        
+        document.querySelector('button[type="reset"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to clear all fields?')) {
+                document.getElementById('registrationForm').reset();
+            }
+        });
+    </script>
+</body>
+</html>
