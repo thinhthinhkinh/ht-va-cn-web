@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Example Cafe Menu</title>
+<style>
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+
+#page {
+	width: 1035px;
+	margin: 20px auto;
+	border: 1px solid #999;
+}
+
+/* ----- header ----- */
+
+#header {
+	background-color: #e6a1a1;
+	text-align: center;
+	padding: 12px 0 8px 0;
+}
+
+#header h1 {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 30px;
+	color: #6e1f1f;
+	letter-spacing: 1px;
+}
+
+/* ----- nav ----- */
+
+#nav {
+	background-color: #e6a1a1;
+	padding: 6px 15px;
+	overflow: hidden;
+}
+
+#nav .home {
+	float: left;
+	margin-top: 2px;
+}
+
+#nav .home img {
+	height: 20px;
+}
+
+#nav .links {
+	float: left;
+	margin-left: 15px;
+}
+
+#nav .links a {
+	display: inline-block;
+	background-color: #d98888;
+	color: #4d0f0f;
+	font-weight: bold;
+	font-size: 12px;
+	text-decoration: none;
+	padding: 6px 14px;
+	margin-right: 2px;
+}
+
+#nav .links a:hover {
+	background-color: #c97777;
+}
+
+#nav .search {
+	float: right;
+}
+
+#nav .search input[type=text] {
+	width: 140px;
+	padding: 4px;
+	border: 1px solid #aaa;
+}
+
+#nav .search input[type=submit] {
+	padding: 4px 10px;
+}
+
+/* ----- layout: 3 columns ----- */
+
+#body-wrap {
+	overflow: hidden;
+}
+
+#sidebar-left {
+	float: left;
+	width: 150px;
+	padding: 15px 10px;
+}
+
+#sidebar-left a {
+	display: block;
+	background-color: #e6a1a1;
+	color: #4d0f0f;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 8px 6px;
+	margin-bottom: 4px;
+}
+
+#sidebar-left a:hover {
+	background-color: #d98888;
+}
+
+#sidebar-left .cafe-photo {
+	margin-top: 10px;
+	text-align: center;
+}
+
+#sidebar-left .cafe-photo img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 50%;
+	border: 2px solid #e6a1a1;
+}
+
+#sidebar-left .order-online {
+	display: block;
+	margin-top: 12px;
+	color: #c0392b;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+#main {
+	float: left;
+	width: 615px;
+	padding: 15px 10px;
+}
+
+.section-title {
+	background-color: #e6a1a1;
+	color: #6e1f1f;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	letter-spacing: 8px;
+	padding: 6px 0;
+	margin: 0 0 10px 0;
+}
+
+.menu-list {
+	list-style: disc;
+	margin: 0 0 6px 25px;
+	padding: 0;
+}
+
+.menu-list li {
+	margin-bottom: 4px;
+}
+
+.menu-list .price {
+	color: #666;
+}
+
+.featured {
+	color: #b03030;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.back-top {
+	display: block;
+	color: #b03030;
+	font-size: 12px;
+	text-decoration: underline;
+	margin-bottom: 25px;
+}
+
+/* ----- information form ----- */
+
+#info-form {
+	margin-top: 5px;
+}
+
+#info-form .row {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+#info-form .row input[type=text],
+#info-form .row input[type=email] {
+	width: 47%;
+	padding: 6px;
+	border: 1px solid #bbb;
+}
+
+#info-form .row input:first-child {
+	float: left;
+}
+
+#info-form .row input:last-child {
+	float: right;
+}
+
+#info-form select {
+	padding: 5px;
+	margin-right: 20px;
+}
+
+#info-form textarea {
+	width: 98%;
+	height: 70px;
+	padding: 6px;
+	border: 1px solid #bbb;
+	margin-top: 10px;
+}
+
+#info-form .buttons {
+	margin-top: 10px;
+}
+
+#info-form .buttons input {
+	padding: 6px 18px;
+	margin-right: 8px;
+}
+
+/* ----- right sidebar : events ----- */
+
+#sidebar-right {
+	float: left;
+	width: 250px;
+	background-color: #1a1a1a;
+	color: #fff;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+#sidebar-right h2 {
+	margin-top: 0;
+	font-size: 20px;
+}
+
+.event {
+	margin-bottom: 22px;
+}
+
+.event h3 {
+	margin: 0 0 6px 0;
+	font-size: 15px;
+}
+
+.event img {
+	width: 100%;
+	display: block;
+	margin-bottom: 6px;
+}
+
+.event p {
+	font-size: 12px;
+	line-height: 1.5;
+	color: #ccc;
+	margin: 0;
+}
+
+.event a {
+	color: #e6a1a1;
+	text-decoration: underline;
+}
+
+/* ----- footer ----- */
+
+#footer {
+	clear: both;
+	background-color: #e6a1a1;
+	text-align: center;
+	padding: 12px 0;
+}
+
+#footer p {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", serif;
+	font-style: italic;
+	font-weight: bold;
+	color: #6e1f1f;
+}
+
+</style>
+</head>
+<body>
+
+<div id="page">
+
+	<div id="header">
+		<h1>Example Cafe Menu</h1>
+	</div>
+
+	<div id="nav">
+		<div class="home"><a href="#top"><img src="img\icons8-home-50.png" alt="home"></a></div>
+		<div class="links">
+			<a href="#starter">STARTER</a>
+			<a href="#maincourses">MAIN COURSES</a>
+			<a href="#desserts">DESSERTS</a>
+		</div>
+		<div class="search">
+			<form action="#">
+				<input type="text" name="q">
+				<input type="submit" value="Go">
+			</form>
+		</div>
+	</div>
+
+	<div id="body-wrap">
+
+		<div id="sidebar-left">
+			<a href="#">Cafe Latte</a>
+			<a href="#">Cappuccino</a>
+			<a href="#">House Blend</a>
+			<a href="#">Ice-cream Cafe</a>
+
+			<div class="cafe-photo">
+				<img src="img/company.png" alt="cafe">
+			</div>
+
+			<a class="order-online" href="#">Order Online</a>
+		</div>
+
+		<div id="main">
+
+			<h2 id="starter" class="section-title">S t a r t e r</h2>
+			<ul class="menu-list">
+				<li>Chestnut and Mushroom Gyoza <span class="price">(x)</span></li>
+				<li>Goat Cheese <span class="price">(x)</span></li>
+				<li><span class="featured">HONEY SOY CHICKEN KEBABS</span> <span class="price">(x)</span></li>
+				<li>Seafood Salad <span class="price">(x)</span></li>
+			</ul>
+			<a class="back-top" href="#top">Back to Top</a>
+
+			<h2 id="desserts" class="section-title">D e s s e r t s</h2>
+			<ul class="menu-list">
+				<li>Lemon Sorbet <span class="price">(x)</span></li>
+				<li>Chocolate Mud Pie <span class="price">(x)</span></li>
+				<li>Pecan Pie <span class="price">(x)</span></li>
+				<li>Selection of fine Cheeses from Around the World <span class="price">(x)</span></li>
+			</ul>
+			<a class="back-top" href="#top">Back to Top</a>
+
+			<h2 class="section-title">I N F O R M A T I O N</h2>
+			<form id="info-form" action="#">
+				<div class="row">
+					<input type="text" placeholder="First Name">
+					<input type="text" placeholder="Last Name">
+				</div>
+				<div class="row">
+					<input type="email" placeholder="Email">
+					<input type="text" placeholder="Telephone">
+				</div>
+				<div class="row">
+					<select>
+						<option>USA</option>
+						<option>Vietnam</option>
+						<option>Singapore</option>
+						<option>Other</option>
+					</select>
+					<label><input type="radio" name="nation" checked> Vietnamese</label>
+					<label><input type="radio" name="nation"> Foreigner</label>
+				</div>
+				<textarea placeholder="Comment"></textarea>
+				<div class="buttons">
+					<input type="submit" value="Submit">
+					<input type="button" value="Cancel">
+				</div>
+			</form>
+
+		</div>
+
+		<div id="sidebar-right">
+			<h2>Events</h2>
+
+			<div class="event">
+				<h3>Regular Meetings</h3>
+				<img src="img/meeting.png" alt="regular meetings">
+				<p>Host your regular team meetings or activities in the comfort of your own private room. Charge up on Kith's aromatic coffee and delectable dishes for that extra boost in your work! <a href="#">Read more...</a></p>
+			</div>
+
+			<div class="event">
+				<h3>Product Launches</h3>
+				<img src="img/launch.png" alt="product launches">
+				<p>Launch your product with ease in a space that truly fits its image. Create an unforgettable experience for your guests with our spacious outlets! <a href="#">Read more...</a></p>
+			</div>
+
+			<div class="event">
+				<h3>Company Dinner &amp; Dance</h3>
+				<img src="img/company.png" alt="company dinner and dance">
+				<p>Discover your ideal setting for a corporate dinner and dance here at Kith. Make your event a night to remember at our premium eatery. <a href="#">Read more...</a></p>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="footer">
+		<p>ABC Company &copy; - 12345678 - abccoffee@gmail.com</p>
+	</div>
+
+</div>
+
+</body>
+</html>
